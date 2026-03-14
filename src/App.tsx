@@ -8,6 +8,8 @@ import Lenis from "lenis";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Founder from "./pages/Founder";
+import Chairperson from "./pages/Chairperson";
+import LeadershipTeam from "./pages/LeadershipTeam";
 
 const queryClient = new QueryClient();
 
@@ -47,7 +49,9 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/Sri-Chaitanya-Founder" element={<Founder />} />
+            <Route path="/founder" element={<Founder />} />
+            <Route path="/chairperson" element={<Chairperson />} />
+            <Route path="/leadership-team" element={<LeadershipTeam />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

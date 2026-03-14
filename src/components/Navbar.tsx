@@ -14,11 +14,11 @@ type NavLink = {
 const navLinks: NavLink[] = [
   {
     label: "About Us",
-    href: "#about",
+    href: "#",
     children: [
-      { label: "Founder", href: "/Sri-Chaitanya-Founder" },
-      { label: "Chairperson", href: "/Sri-Chaitanya-Chairperson" },
-      { label: "Leadership Team", href: "/Sri-Chaitanya-Leadership-Team(Directors)" },
+      { label: "Founder", href: "/founder" },
+      { label: "Chairperson", href: "/chairperson" },
+      { label: "Leadership Team", href: "/leadership-team" },
     ],
   },
   { label: "Achievements", href: "#achievements" },
