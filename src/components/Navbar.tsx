@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import logo from "@/assets/logo_transparent_fixed.png";
@@ -103,6 +103,16 @@ const Navbar = () => {
   const [location, setLocation] = useState("Select City");
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const handleSelectCityClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    const target = document.getElementById("location-selector");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+    } else {
+      window.location.assign("/#location-selector");
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 10);
@@ -253,6 +263,7 @@ const Navbar = () => {
       <div className="hidden lg:flex items-center absolute left-6 top-[40px] -translate-y-1/2">
         <a
           href="/#location-selector"
+          onClick={handleSelectCityClick}
           className="group inline-flex items-center rounded-full p-[1.5px] bg-[linear-gradient(120deg,hsl(var(--accent)),hsl(var(--primary)))] shadow-[0_12px_28px_rgba(13,59,102,0.25)] transition-all duration-300 ease-out hover:shadow-[0_18px_35px_rgba(226,61,104,0.35)]"
         >
           <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--primary))] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/90">
