@@ -92,7 +92,7 @@ const LeadershipTeam = () => {
               </div>
               <p className="mx-auto mt-7 max-w-3xl text-sm sm:text-base text-white/85 leading-relaxed">
                 The leadership team guides Sri Chaitanya’s academic vision,
-                operational excellence, and nationwide growth—ensuring students
+                operational excellence, and nationwide growth ensuring students
                 receive world-class support across every campus.
               </p>
             </div>
