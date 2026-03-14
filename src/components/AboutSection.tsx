@@ -96,6 +96,8 @@ const AboutSection = () => {
         <div className="absolute top-1/3 -left-20 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(226,61,104,0.14),transparent_72%)] blur-3xl" />
         <div className="absolute -bottom-28 right-1/4 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(236,173,86,0.12),transparent_70%)] blur-[90px]" />
       </div>
+      <div className="top-rankers-outline" aria-hidden="true" />
+      <div className="achievements-outline-bottom" aria-hidden="true" />
       <div className="container relative mx-auto px-6">
         <motion.div
           className="text-center mb-16"

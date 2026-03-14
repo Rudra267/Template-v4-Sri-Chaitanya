@@ -290,6 +290,7 @@ export default function Footer({ onNavigate }: FooterProps) {
   const [locationError, setLocationError] = useState<string | null>(null);
   const [selectedBranch, setSelectedBranch] = useState<typeof NEARBY_BRANCHES[0] | null>(null);
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   // Detect user location
   useEffect(() => {
@@ -314,6 +315,18 @@ export default function Footer({ onNavigate }: FooterProps) {
         setDetectedCity("Select City");
       }
     );
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? scrollTop / docHeight : 0;
+      setScrollProgress(progress);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const goTo = (section: string) => {
@@ -937,13 +950,20 @@ export default function Footer({ onNavigate }: FooterProps) {
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r from-[#a41f2a] to-[#c62834] shadow-lg hover:shadow-xl transition-all"
+        style={{
+          background: `conic-gradient(hsl(var(--accent)) ${Math.round(
+            scrollProgress * 360
+          )}deg, rgba(255,255,255,0.2) 0deg)`,
+        }}
+        className="fixed bottom-6 right-6 z-50 grid h-14 w-14 place-items-center rounded-full p-[3px] shadow-lg transition-all"
         aria-label="Back to top"
       >
-        <ChevronRight className="size-5 -rotate-90 text-white" />
+        <span className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-r from-[#a41f2a] to-[#c62834] shadow-[0_12px_30px_rgba(164,31,42,0.35)]">
+          <ChevronRight className="size-5 -rotate-90 text-white" />
+        </span>
       </motion.button>
     </footer>
   );

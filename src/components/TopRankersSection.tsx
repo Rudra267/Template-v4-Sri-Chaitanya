@@ -71,7 +71,7 @@ const TopRankersSection = () => {
     >
       <div className="absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-accent/15 blur-3xl" />
       <div className="absolute -bottom-24 right-10 h-72 w-72 rounded-full bg-primary/15 blur-3xl" />
-      <div className="top-rankers-outline" aria-hidden="true" />
+      <div className="top-rankers-outline z-[1]" aria-hidden="true" />
       <div className={`rankers-celebration ${isInView ? "is-active" : ""}`} aria-hidden="true">
         {[
           { x: "22%", y: "12%", d: "0ms", s: "0.9" },
@@ -121,12 +121,13 @@ const TopRankersSection = () => {
         ))}
       </div>
       <div
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0 opacity-40 z-0"
         style={{
           backgroundImage: "radial-gradient(circle, rgba(15,23,42,0.08) 1px, transparent 1px)",
           backgroundSize: "26px 26px",
         }}
       />
+      <div className="top-rankers-outline-bottom z-[1]" aria-hidden="true" />
 
       <div className="container relative z-10 mx-auto px-6">
         <motion.div

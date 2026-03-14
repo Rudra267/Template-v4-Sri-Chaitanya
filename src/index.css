@@ -620,7 +620,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 220px;
+    height: 150px;
     pointer-events: none;
     opacity: 0.5;
     background-image:
@@ -639,7 +639,33 @@
         transparent 60px
       );
     background-position: 0 0;
-    mask-image: linear-gradient(180deg, #000 0%, transparent 75%);
+    mask-image: linear-gradient(180deg, #000 0%, transparent 55%);
+  }
+
+  .top-rankers-outline-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 150px;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        rgba(56, 132, 255, 0.22) 0,
+        rgba(56, 132, 255, 0.22) 1px,
+        transparent 1px,
+        transparent 60px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(56, 132, 255, 0.2) 0,
+        rgba(56, 132, 255, 0.2) 1px,
+        transparent 1px,
+        transparent 60px
+      );
+    mask-image: linear-gradient(0deg, #000 0%, transparent 70%);
   }
 
   .rankers-celebration {

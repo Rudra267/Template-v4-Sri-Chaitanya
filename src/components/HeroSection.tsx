@@ -207,7 +207,10 @@ const branches = {
 
       <div className="absolute left-0 right-0 -bottom-20 z-30">
         <div className="container mx-auto px-6">
-          <div className="rounded-[28px] bg-white shadow-[0_30px_80px_rgba(13,59,102,0.2),_0_18px_0_-6px_rgba(0,0,0,0.18)] border border-slate-100 p-6 md:p-8">
+          <div
+            id="location-selector"
+            className="rounded-[28px] bg-white shadow-[0_30px_80px_rgba(13,59,102,0.2),_0_18px_0_-6px_rgba(0,0,0,0.18)] border border-slate-100 p-6 md:p-8"
+          >
             <div className="grid gap-4 lg:grid-cols-[1fr_1fr_1fr_1fr_auto]">
 
 {/* Board */}

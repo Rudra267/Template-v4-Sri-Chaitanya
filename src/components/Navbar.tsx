@@ -43,7 +43,7 @@ const Logo = ({
   const shouldHideText = hideText || compact;
   return (
   <a
-    href="#"
+    href="/"
     className={`group relative flex flex-col items-center justify-center transition-transform duration-300 ${
       compact ? "translate-y-0" : "translate-y-3"
     }`}
@@ -179,20 +179,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[hsl(var(--primary))] text-white shadow-[0_18px_35px_rgba(13,59,102,0.25)]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[hsl(var(--primary))] text-white shadow-[0_18px_35px_rgba(13,59,102,0.25)] relative">
       
       <div className="h-1 w-full bg-[linear-gradient(90deg,_hsl(var(--accent)),_hsl(var(--primary)))]" />
-      <div className="container mx-auto px-6 h-[80px]">
+      <div className="container mx-auto px-6 h-[80px] relative">
         <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center py-3">
-          <div className="flex items-center gap-6 -translate-y-2">
-
-  {/* Location */}
-  <div className="flex items-center mr-6 -translate-y-1">
-  <div className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition px-3 py-1.5 rounded-full text-sm font-medium text-white">
-  <MapPin className="w-4 h-4 text-[hsl(var(--accent))]" />
-  <span>{location}</span>
-</div>
-</div>
+          <div className="flex items-center gap-6 justify-end pr-6 -translate-y-2">
 
   {leftLinks.map((link) => renderDesktopLink(link))}
 
@@ -200,15 +192,10 @@ const Navbar = () => {
 
           <Logo hideText={isScrolled} isScrolled={isScrolled} />
 
-          <div className="flex items-center gap-6 justify-end -translate-y-2">
+          <div className="flex items-center gap-6 justify-start pl-6 -translate-y-2">
 
   {rightLinks.map((link) => renderDesktopLink(link, "right"))}
 
-  {/* Login Button */}
-  <button className="flex items-center gap-2 border border-white/30 hover:border-white hover:bg-white/10 transition px-4 py-1.5 rounded-full text-sm font-semibold text-white -translate-y-1">
-  <User className="w-4 h-4" />
-  Login
-</button>
 </div>
         </div>
 
@@ -261,6 +248,35 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Action Buttons (desktop) */}
+      <div className="hidden lg:flex items-center absolute left-6 top-[40px] -translate-y-1/2">
+        <a
+          href="/#location-selector"
+          className="group inline-flex items-center rounded-full p-[1.5px] bg-[linear-gradient(120deg,hsl(var(--accent)),hsl(var(--primary)))] shadow-[0_12px_28px_rgba(13,59,102,0.25)] transition-all duration-300 ease-out hover:shadow-[0_18px_35px_rgba(226,61,104,0.35)]"
+        >
+          <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--primary))] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/90">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white">
+              <MapPin className="w-3.5 h-3.5" />
+            </span>
+            <span className="text-white">
+              {location === "Select City" ? "Click to select city" : location}
+            </span>
+          </span>
+        </a>
+      </div>
+
+      <div className="hidden lg:flex items-center gap-3 absolute right-6 top-[40px] -translate-y-1/2">
+        <button className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-white shadow-[0_12px_28px_rgba(13,59,102,0.25)] backdrop-blur-md transition-all duration-300 ease-out hover:bg-white hover:text-[hsl(var(--primary))] hover:border-white hover:shadow-[0_18px_35px_rgba(255,255,255,0.35)] active:scale-[0.98]">
+          Admission Enquiry Form
+        </button>
+        <button className="group inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-white shadow-[0_12px_28px_rgba(13,59,102,0.25)] backdrop-blur-md transition-all duration-300 ease-out hover:bg-[hsl(var(--accent))] hover:border-[hsl(var(--accent))] hover:text-white hover:shadow-[0_18px_35px_rgba(226,61,104,0.35)] active:scale-[0.98]">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15 text-[hsl(var(--accent))] shadow-[0_6px_12px_rgba(226,61,104,0.35)] transition group-hover:bg-white/25 group-hover:text-white">
+            <User className="w-3.5 h-3.5" />
+          </span>
+          Login
+        </button>
+      </div>
     </nav>
   );
 };
